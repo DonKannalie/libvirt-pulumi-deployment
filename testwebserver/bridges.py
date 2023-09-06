@@ -1,4 +1,4 @@
-from pulumi import ResourceOptions
-from pulumi_libvirt import Network
+from networks import get_networks
 
-from ..networks.bridges import networks
+def run(hosts):
+    print(get_networks())
