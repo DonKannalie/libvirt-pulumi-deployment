@@ -1,9 +1,11 @@
 import os
 import importlib
 
-def module_iterator(submodule: str):
+def module_iterator(submodule: str, mod_blacklist: list[str] = []):
     submodule_ls = map(lambda filename: filename[:-3],
-                    filter(lambda filename: filename != '__init__.py' and filename != '__pycache__',
+                    filter(lambda filename: filename != '__init__.py' and
+                                            filename != '__pycache__' and
+                                            filename[:-3] not in mod_blacklist,
                         os.listdir(submodule)
                     )
                 )
