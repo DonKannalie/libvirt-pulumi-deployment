@@ -1,7 +1,6 @@
-import importlib
-import os
+from common import module_iterator
 
 networks = {}
 
-test = importlib.import_module(".bridges", __name__)
-print(test)
+for mod in module_iterator(__name__):
+    print(mod)

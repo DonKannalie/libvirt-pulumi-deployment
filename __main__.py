@@ -1,10 +1,6 @@
 """A Python Pulumi program"""
-
-import pulumi
-import os
-import importlib
 import pulumi_libvirt as libvirt
-from common.common import module_iterator
+from common import module_iterator
 
 from vars import *
 
