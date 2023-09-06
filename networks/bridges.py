@@ -1,4 +1,4 @@
-from pulumi import ResourceOptions
+import pulumi
 from pulumi_libvirt import Network
 
 
@@ -13,4 +13,5 @@ def run(hosts):
                                 mode='bridge',
                                 bridge='br0',
                                 autostart=True,
-                                opts=ResourceOptions(provider=value))})
+                                opts=pulumi.ResourceOptions(provider=value))})
+        # pulumi.export(f"bridge_network_{key}", networks[f"bridge_network_{key}"])
