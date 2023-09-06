@@ -10,5 +10,6 @@ hosts = [
 ]
 
 submodules = [
-    'networks'
+    {'name': 'networks', 'blacklist': ['util']},
+    {'name': 'testwebserver', 'blacklist': []}
 ]

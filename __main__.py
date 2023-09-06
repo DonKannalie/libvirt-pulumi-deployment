@@ -10,5 +10,5 @@ for host in hosts:
     providers.update({host['name']: libvirt.Provider(resource_name = host['name'], uri = host['uri'])})
 
 for submodule in submodules:
-    for mod in module_iterator(submodule):
+    for mod in module_iterator(submodule['name'], submodule['blacklist']):
         mod.run(providers)
