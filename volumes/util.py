@@ -7,4 +7,4 @@ def get_volumes():
     return volumes
 
 def get_volume(name):
-    return get_volume[name]
+    return get_volumes()[name]
