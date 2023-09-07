@@ -13,6 +13,7 @@ submodules = [
     {'name': 'providers', 'blacklist': ['util']},
     {'name': 'networks', 'blacklist': ['util']},
     {'name': 'base_images', 'blacklist': ['util']},
+     {'name': 'volumes', 'blacklist': ['util']},
     # {'name': 'testwebserver', 'blacklist': []}
 ]
 
@@ -29,6 +30,15 @@ networks = [
 base_images = [
     {'name': "almalinux",
      'url': 'https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-9.2-20230513.x86_64.qcow2'
+    }
+]
+
+volumes = [
+    {
+        'name': 'testwebserver',
+        'base_image': 'almalinux',
+        'size': 1024*1024*1024*10,
+        'host': 'virt01'
     }
 ]
 
