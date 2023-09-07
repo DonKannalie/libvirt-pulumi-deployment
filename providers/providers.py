@@ -5,7 +5,7 @@ from pulumi_libvirt import Provider
 
 providers = {}
 
-def run(hosts):
+def run():
     global providers
     for provider in vars.providers:
         new_provider = Provider(resource_name = provider['name'], uri = provider['uri'])

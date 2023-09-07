@@ -6,7 +6,7 @@ from providers import get_provider
 
 networks = {}
 
-def run(hosts):
+def run():
     global networks
 
     for network in vars.networks:
