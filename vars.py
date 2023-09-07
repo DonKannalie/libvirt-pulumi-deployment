@@ -13,8 +13,8 @@ submodules = [
     {'name': 'providers', 'blacklist': ['util']},
     {'name': 'networks', 'blacklist': ['util']},
     {'name': 'base_images', 'blacklist': ['util']},
-     {'name': 'volumes', 'blacklist': ['util']},
-    # {'name': 'testwebserver', 'blacklist': []}
+    {'name': 'volumes', 'blacklist': ['util']},
+    {'name': 'vms', 'blacklist': ['util']},
 ]
 
 networks = [
@@ -46,12 +46,12 @@ vms = [
     {
         'name': 'testwebserver',
         'libvirt_host': 'virt01',
-        'vcpus': 4,
+        'vcpu': 4,
         'memory': 2048,
         'volumes': [
             'testwebserver'
         ],
-        'network_interfaces': [
+        'networks': [
             'bridge_network'
         ],
         'cloudinit': {
