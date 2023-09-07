@@ -10,7 +10,7 @@ def create_cloudinit_disk(name: str, provider: pulumi.ProviderResource ,user_dat
         name=f"{cloudinit_disk_name}.iso",
         user_data=render_template('cloudinit/user_data', user_data),
         meta_data=render_template('cloudinit/meta_data', meta_data),
-        network_config=render_template('cloudinit/network_config', network_config)
+        network_config=render_template('cloudinit/network_config', network_config),
         opts=pulumi.ResourceOptions(provider=provider)
     )
 
