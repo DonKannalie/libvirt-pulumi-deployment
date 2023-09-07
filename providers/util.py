@@ -5,3 +5,6 @@ def get_providers():
     for mod in module_iterator(__name__.split('.')[0], ['util']):
         providers.update(mod.providers)
     return providers
+
+def get_provider(name: str):
+    return get_providers()[name]
