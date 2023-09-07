@@ -30,6 +30,9 @@ def run(hosts):
                                  'type': 'vnc',
                                  'listen_type': 'address'
                                },
+                               cpu={
+                                 'mode': 'host-passthrough'
+                               },
                                cloudinit= cloudinit_disk.id,
                                network_interfaces = [{
                                    'network_id': networks.get_networks()[f'bridge_network_{libvirt_host}']
