@@ -1,14 +1,7 @@
 """A Python Pulumi program"""
-import pulumi_libvirt as libvirt
+import vars
 from common import module_iterator
 
-from vars import *
-
-providers = {}
-
-for host in hosts:
-    providers.update({host['name']: libvirt.Provider(resource_name = host['name'], uri = host['uri'])})
-
-for submodule in submodules:
+for submodule in vars.submodules:
     for mod in module_iterator(submodule['name'], submodule['blacklist']):
-        mod.run(providers)
+        mod.run(None)
