@@ -13,4 +13,4 @@ def run():
                               source=f"{image['url']}",
                               opts=pulumi.ResourceOptions(provider=list(get_providers().values())[0]))
         images.update({f"{image['name']}": new_image})
-        pulumi.export(f"{image['name']}", new_image)
+        pulumi.export(f"{image['name']}-base_img", new_image)
