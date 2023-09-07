@@ -24,5 +24,5 @@ def run():
                             mode=network['mode'],
                             autostart=network['autostart'],
                             opts=pulumi.ResourceOptions(provider=get_provider(host)))}
-            networks.update(new_network)
+            networks.update({f"{network['name']}_{host}", new_network})
             pulumi.export(f"{network['name']}_{host}", new_network)
