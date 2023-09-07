@@ -12,17 +12,15 @@ def run():
     for network in vars.networks:
         for host in network['hosts']:
             if network['mode'] == 'bridge':
-                new_network = {f"{network['name']}_{host}":
-                    Network(resource_name=f"{network['name']}_{host}",
-                            mode=network['mode'],
-                            bridge=network['bridge'],
-                            autostart=network['autostart'],
-                            opts=pulumi.ResourceOptions(provider=get_provider(host)))}
+                new_network = Network(resource_name=f"{network['name']}_{host}",
+                                mode=network['mode'],
+                                bridge=network['bridge'],
+                                autostart=network['autostart'],
+                                opts=pulumi.ResourceOptions(provider=get_provider(host)))
             else:
-                new_network = {f"{network['name']}_{host}":
-                    Network(resource_name=f"{network['name']}_{host}",
-                            mode=network['mode'],
-                            autostart=network['autostart'],
-                            opts=pulumi.ResourceOptions(provider=get_provider(host)))}
+                new_network = Network(resource_name=f"{network['name']}_{host}",
+                                mode=network['mode'],
+                                autostart=network['autostart'],
+                                opts=pulumi.ResourceOptions(provider=get_provider(host)))
             networks.update({f"{network['name']}_{host}": new_network})
             pulumi.export(f"{network['name']}_{host}", new_network)
