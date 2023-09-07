@@ -7,5 +7,4 @@ def get_networks():
     return networks
 
 def get_network(name):
-    print(get_networks())
     return get_networks()[name]
