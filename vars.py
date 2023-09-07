@@ -12,7 +12,7 @@ providers = [
 submodules = [
     {'name': 'providers', 'blacklist': ['util']},
     {'name': 'networks', 'blacklist': ['util']},
-    # {'name': 'base_images', 'blacklist': ['util']},
+    {'name': 'base_images', 'blacklist': ['util']},
     # {'name': 'testwebserver', 'blacklist': []}
 ]
 
@@ -22,8 +22,7 @@ networks = [
         'mode': 'bridge',
         'bridge': 'br0',
         'autostart': 'true',
-        'hosts': [ 'virt01' ]
-        # 'hosts': [ 'virt01', 'virt02' ]
+        'hosts': [ 'virt01', 'virt02' ]
     },
 ]
 
