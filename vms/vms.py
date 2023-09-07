@@ -15,11 +15,13 @@ def run():
     for vm in vars.vms:
         user_data = vm['cloudinit']['user_data'] if vm['cloudinit']['user_data'] else {}
         meta_data = vm['cloudinit']['meta_data'] if vm['cloudinit']['meta_data'] else {}
+        network_config = vm['cloudinit']['network_config'] if vm['cloudinit']['network_config'] else {}
 
         cloudinit_disk = create_cloudinit_disk(f"{vm['name']}-cloudinit",
                                                provider=get_provider(vm['libvirt_host']),
                                                user_data=user_data,
-                                               meta_data=meta_data)
+                                               meta_data=meta_data,
+                                               network_config=network_config)
 
         new_vm = Domain(resource_name=f"{vm['name']}-{vm['libvirt_host']}",
                         disks=[{'volume_id': get_volume(volume).id} for volume in vm['volumes'] if volume in get_volumes().keys() ],
