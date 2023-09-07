@@ -46,10 +46,17 @@ vms = [
     {
         'name': 'testwebserver',
         'libvirt_host': 'virt01',
-        'base_image': 'almalinux',
         'vcpus': 4,
         'memory': 2048,
-        'disk_size': 1024*1024*1024*10,
-
+        'volumes': [
+            'testwebserver'
+        ],
+        'network_interfaces': [
+            'bridge_network'
+        ],
+        'cloudinit': {
+            'user_data': {},
+            'meta_data': {}
+        }
     }
 ]
