@@ -9,14 +9,6 @@ providers = [
     }
 ]
 
-submodules = [
-    {'name': 'providers', 'blacklist': ['util']},
-    {'name': 'networks', 'blacklist': ['util']},
-    {'name': 'base_images', 'blacklist': ['util']},
-    {'name': 'volumes', 'blacklist': ['util']},
-    {'name': 'vms', 'blacklist': ['util']},
-]
-
 networks = [
     {
         'name': "bridge_network",
@@ -35,7 +27,7 @@ base_images = [
 
 volumes = [
     {
-        'name': 'testwebserver',
+        'name': 'testserver',
         'base_image': 'almalinux',
         'size': 1024*1024*1024*10,
         'host': 'virt01'
@@ -49,7 +41,7 @@ vms = [
         'vcpu': 4,
         'memory': 2048,
         'volumes': [
-            'testwebserver'
+            'testserver'
         ],
         'networks': [
             'bridge_network'
