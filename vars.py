@@ -44,7 +44,7 @@ volumes = [
 
 vms = [
     {
-        'name': 'testwebserver',
+        'name': 'testserver',
         'libvirt_host': 'virt01',
         'vcpu': 4,
         'memory': 2048,
@@ -55,8 +55,13 @@ vms = [
             'bridge_network'
         ],
         'cloudinit': {
-            'user_data': {},
-            'meta_data': {}
+            'user_data': {
+                'root_password': "geheim"
+            },
+            'meta_data': {
+                'hostname': 'testserver'
+            },
+            'network_config': {}
         }
     }
 ]
