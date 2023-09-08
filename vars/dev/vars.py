@@ -56,7 +56,13 @@ vms = [
         ],
         'cloudinit': {
             'user_data': {
-                'root_password': "geheim"
+                'default_passwd': "sagichnicht",
+                # 'users': [
+                #     {
+                #         'name': 'testuser',
+                #         'sudo': 'ALL=(ALL) NOPASSWD:ALL'
+                #     }
+                # ]
             },
             'meta_data': {
                 'hostname': 'testserver'
