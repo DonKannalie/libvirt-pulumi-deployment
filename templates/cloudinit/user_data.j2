@@ -1,7 +1,7 @@
 #cloud-config
 ssh_pwauth: false
 user: sfenzke
-password: geheim
+password: {{ default_passwd | default('passwort') }}
 
 users:
   - default
@@ -13,6 +13,21 @@ users:
   - name: sfenzke
     ssh_authorized_keys:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRju8MB/kGJeA+XRj9JEEklMKWdt4+u/BDWVe7/kuEXCjHcIRbE7Nf4j2QNsH1Gmqcd4SjjAvkNTcKlvI2/CFed2SHr/7zLEe8tBUZzY3mhGoj9A9WtluJw3l+Qrh0q/sDuNefd2paewDFfuyVoQCjc9DQZu47fcFMNBJj8qcQEM96CyB6NwVtCvycrrqc/9h3zeG7Q5+pOKlQ2kHhSHO0UYMu76kjNjapU8RvsZvPRFmlCCSB2eXtV3VaiddguF5+HbNjul1PtVomzVQIa0eKg0JuPmiROoL+7rXjNYoZWPqQQXCgmuIWjZ1ghNONoBqNWZ7sCKatJjI27Teg2msF94Y+1/EAQZkOGc+ZxhVj3foIM1oATBMce1t0pXHR8aJ12G+R7CILFzshu32FOqD4RHjNB701wdbuAeMeqdqG+BqBWke1LzKPDHztGHtY8oJLFrOBRO3nwsLMDK+ZoZRDdDv8s3pK2Any+Ivpqiby1z4H5a9S0uvws0DBOwaiAQs=
+  {% for user in users %}
+  - name: {{ user.name }}
+    {% if user.ssh_authorized_keys %}
+    ssh_authorized_keys:
+      {% for ssh_key in user.ssh_authorized_keys %}
+      - {{ ssh_key }}
+      {% endfor %}
+    {% endif %}
+    {% if user.sudo %}
+    sudo: {{ user.sudo }}
+    {% endif %}
+    {% if user.lock_passwd %}
+    lock_passwd: {{ user.lock_passwd }}
+    {% endif %}
+  {% endfor %}
 chpasswd:
   expire: false
 locale: de_DE
