@@ -1,7 +1,6 @@
 import pulumi
 from pulumi_libvirt import CloudInitDisk
 from template_renderer import render_template
-import vars
 
 def create_cloudinit_disk(name: str, provider: pulumi.ProviderResource ,user_data: dict = {}, meta_data: dict = {}, network_config= {}):
     cloudinit_disk_name = f'{name}-cloudinit-disk'

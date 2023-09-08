@@ -1,4 +1,4 @@
-import vars
+import config
 import pulumi
 
 from pulumi_libvirt import Domain
@@ -12,7 +12,7 @@ vms = {}
 def run():
     global vms
 
-    for vm in vars.vms:
+    for vm in config.vms:
         user_data = vm['cloudinit']['user_data'] if vm['cloudinit']['user_data'] else {}
         meta_data = vm['cloudinit']['meta_data'] if vm['cloudinit']['meta_data'] else {}
         network_config = vm['cloudinit']['network_config'] if vm['cloudinit']['network_config'] else {}

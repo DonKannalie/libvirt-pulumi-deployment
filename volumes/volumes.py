@@ -1,4 +1,4 @@
-import vars
+import config
 import pulumi
 
 from pulumi_libvirt import Volume
@@ -10,7 +10,7 @@ volumes = {}
 def run():
     global volumes
 
-    for volume in vars.volumes:
+    for volume in config.volumes:
         new_volume = {}
         if volume['base_image']:
             new_volume = Volume(resource_name=f"{volume['name']}-{volume['host']}-vol",

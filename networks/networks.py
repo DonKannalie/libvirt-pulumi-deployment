@@ -1,4 +1,4 @@
-import vars
+import config
 import pulumi
 
 from pulumi_libvirt import Network
@@ -9,7 +9,7 @@ networks = {}
 def run():
     global networks
 
-    for network in vars.networks:
+    for network in config.networks:
         for host in network['hosts']:
             if network['mode'] == 'bridge':
                 new_network = Network(resource_name=f"{network['name']}_{host}",

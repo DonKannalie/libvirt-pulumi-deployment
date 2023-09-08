@@ -1,7 +1,7 @@
 """A Python Pulumi program"""
-import vars
+import config
 from common import module_iterator
 
-for submodule in vars.submodules:
+for submodule in config.submodules:
     for mod in module_iterator(submodule['name'], submodule['blacklist']):
         mod.run()
